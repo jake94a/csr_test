@@ -23,6 +23,7 @@ jobs:
         run: |
           git config --global user.name $AUTO_USERNAME
           git config --global user.email $AUTO_USER_EMAIL
+          git init
           git remote add origin $CSR_REPO
           git add .
           git commit -m "updated by auto | app commit sha $IMAGE_TAG"
