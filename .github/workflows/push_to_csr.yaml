@@ -18,12 +18,12 @@ jobs:
         env:
           AUTO_USERNAME: auto
           AUTO_USER_EMAIL: jakea@brightplanetsolar.com
-          CONFIG_REPO: https://source.developers.google.com/p/bps-273522/r/test
+          CSR_REPO: git@github.com:jake94a/csr_test.git
           IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
         run: |
           git config --global user.name $AUTO_USERNAME
           git config --global user.email $AUTO_USER_EMAIL
-          git remote add $CONFIG_REPO
+          git remote add $CSR_REPO
           git add .
           git commit -m "updated by auto | app commit sha $IMAGE_TAG"
           git push -u origin main
