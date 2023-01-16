@@ -1,0 +1,29 @@
+name: CSR Sync
+# Runs on all pushes that pass checks and are merged into main.
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  Sync:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: install ssh key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.AUTO_PRIVATE_KEY }}
+          # known_hosts placeholder must remain or this step will error out
+          known_hosts: "do not remove me"
+      - name: update forms-config
+        env:
+          AUTO_USERNAME: auto
+          AUTO_USER_EMAIL: jakea@brightplanetsolar.com
+          CONFIG_REPO: https://source.developers.google.com/p/bps-273522/r/test
+          IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
+        run: |
+          git config --global user.name $AUTO_USERNAME
+          git config --global user.email $AUTO_USER_EMAIL
+          git remote add $CONFIG_REPO
+          git add .
+          git commit -m "updated by auto | app commit sha $IMAGE_TAG"
+          git push origin master
