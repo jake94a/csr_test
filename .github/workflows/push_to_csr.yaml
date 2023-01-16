@@ -14,11 +14,11 @@ jobs:
           key: ${{ secrets.AUTO_PRIVATE_KEY }}
           # known_hosts placeholder must remain or this step will error out
           known_hosts: "do not remove me"
-      - name: update forms-config
+      - name: update csr
         env:
           AUTO_USERNAME: auto
           AUTO_USER_EMAIL: jakea@brightplanetsolar.com
-          CSR_REPO: git@github.com:jake94a/csr_test.git
+          CSR_REPO: ssh://jakea@brightplanetsolar.com@source.developers.google.com:2022/p/bps-273522/r/test
           IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
         run: |
           git config --global user.name $AUTO_USERNAME
