@@ -33,4 +33,4 @@ jobs:
           git pull $REMOTE main --rebase
           git add .
           git commit -m "updated by auto | app commit sha $IMAGE_TAG"
-          git push -u $REMOTE main
+          git push --force -u $REMOTE main
