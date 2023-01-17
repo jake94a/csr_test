@@ -27,6 +27,7 @@ jobs:
           git init
           git branch -m main
           git remote add origin $CSR_REPO
+          git pull --rebase
           git add .
           git commit -m "updated by auto | app commit sha $IMAGE_TAG"
           git push -u origin main
