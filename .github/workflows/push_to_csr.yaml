@@ -31,7 +31,7 @@ jobs:
           git config --global user.email $AUTO_USER_EMAIL
           git remote add $REMOTE $CSR_REPO
           git remote -v
-        # git pull $REMOTE main --rebase
+          git pull $REMOTE main --rebase
         # git add .
         # git commit -m "updated by auto | app commit sha $IMAGE_TAG"
         # git push -u $REMOTE main
