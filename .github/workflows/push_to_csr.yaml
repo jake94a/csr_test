@@ -25,12 +25,13 @@ jobs:
           AUTO_USER_EMAIL: jakea@brightplanetsolar.com
           CSR_REPO: ssh://jakea@brightplanetsolar.com@source.developers.google.com:2022/p/bps-273522/r/test
           IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
+          REMOTE: google
         run: |
           git config --global user.name $AUTO_USERNAME
           git config --global user.email $AUTO_USER_EMAIL
           git remote -v
-        # git remote add origin $CSR_REPO
-        # git pull origin main --rebase
-        # git add .
-        # git commit -m "updated by auto | app commit sha $IMAGE_TAG"
-        # git push -u origin main
+          git remote add $REMOTE $CSR_REPO
+          git pull $REMOTE main --rebase
+          git add .
+          git commit -m "updated by auto | app commit sha $IMAGE_TAG"
+          git push -u $REMOTE main
