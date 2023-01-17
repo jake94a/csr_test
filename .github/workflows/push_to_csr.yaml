@@ -17,9 +17,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2.5.0
         with:
           key: ${{ secrets.AUTO_PRIVATE_KEY }}
-          name: jake94a-gh-csr_test_id_ed25519
-          # known_hosts placeholder must remain or this step will error out
-          known_hosts: unnecessary
+          known_hosts: ${{ secrets.CSR_KNOWN_HOST }}
       - name: update csr
         env:
           AUTO_USERNAME: auto
