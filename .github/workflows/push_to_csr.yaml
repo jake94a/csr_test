@@ -28,11 +28,8 @@ jobs:
         run: |
           git config --global user.name $AUTO_USERNAME
           git config --global user.email $AUTO_USER_EMAIL
-          git config --global init.defaultBranch main
-          git init
-          git branch -m main
           git remote add origin $CSR_REPO
-          git pull --rebase
+          git pull origin main --rebase
           git add .
           git commit -m "updated by auto | app commit sha $IMAGE_TAG"
           git push -u origin main
