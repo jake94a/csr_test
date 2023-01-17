@@ -13,12 +13,13 @@ jobs:
         if: ${{ github.actor != 'dependabot[bot]' }}
         with:
           fetch-depth: 0
-      - name: install ssh key
-        uses: shimataro/ssh-key-action@v2
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2.5.0
         with:
           key: ${{ secrets.AUTO_PRIVATE_KEY }}
+          name: jake94a-gh-csr_test_id_ed25519
           # known_hosts placeholder must remain or this step will error out
-          known_hosts: "do not remove me"
+          known_hosts: unnecessary
       - name: update csr
         env:
           AUTO_USERNAME: auto
