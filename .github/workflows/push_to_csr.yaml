@@ -8,6 +8,11 @@ jobs:
   Sync:
     runs-on: ubuntu-20.04
     steps:
+      # Checkout the repo at the current head
+      - uses: actions/checkout@v3
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        with:
+          fetch-depth: 0
       - name: install ssh key
         uses: shimataro/ssh-key-action@v2
         with:
