@@ -32,5 +32,5 @@ jobs:
           git remote -v
           git pull $REMOTE main --rebase
           git pull origin main --rebase
-          git push --all $REMOTE
-          git push --all origin
+          git push -u $REMOTE main
+          git push -u origin main
