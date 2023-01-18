@@ -7,6 +7,7 @@ on:
 jobs:
   Sync:
     runs-on: ubuntu-20.04
+    permissions: write-all
     steps:
       # Checkout the repo at the current head
       - uses: actions/checkout@v3
